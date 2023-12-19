@@ -21,10 +21,11 @@ TEST(SparseTableTest, BasicTests) {
   EXPECT_EQ(sparseTable.RangeMinimumQuery(0, 2), 0);
   EXPECT_EQ(sparseTable.RangeMinimumQuery(5, 10), 5);
   EXPECT_EQ(sparseTable.RangeMinimumQuery(20, 55), 20);
-
+  EXPECT_EQ(sparseTable.RangeMinimumQuery(58, 59), 58);
   auto sum = [](long a, long b) -> long { return a + b; };
   SparseTable<long, 100, decltype(sum)> sparseTable2(data_span, sum);
   EXPECT_EQ(sparseTable2.RangeSumQuery(0, 2), 3);
+  EXPECT_EQ(sparseTable2.RangeSumQuery(1, 2), 3);
   EXPECT_EQ(sparseTable2.RangeSumQuery(5, 10), 45);
   EXPECT_EQ(sparseTable2.RangeSumQuery(20, 55), 1350);
 }
