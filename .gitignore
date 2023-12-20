@@ -1,5 +1,9 @@
 # Ignore build directory
 build/
+actual_output.txt
+expected_output.txt
+compilation_error.txt
+input.txt
 
 # Ignore CMake cache and temporary files
 CMakeCache.txt

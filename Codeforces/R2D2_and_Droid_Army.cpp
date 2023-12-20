@@ -35,7 +35,6 @@ class R2D2_and_Droid_Army {
     int bottom = 0;
     int top = num_droids - 1;
     int current = (top - bottom + 1) / 2 + bottom;
-    int found = -1;
     bool valid = false;
     int results[5];
     while (bottom <= top) {
@@ -50,7 +49,6 @@ class R2D2_and_Droid_Army {
               data[power_of_two][i + current - (1 << power_of_two) + 1][j]);
         }
         if (required_shots <= num_available_shots) {
-          found = required_shots;
           valid = true;
           for (int j = 0; j < num_detail_types; j++) {
             results[j] = std::max(
