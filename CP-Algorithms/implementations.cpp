@@ -5,9 +5,9 @@
 #include <span>
 #include <vector>
 
-#include "MinQueue.h"
-#include "MinStack.h"
-#include "SparseTable.h"
+#include "DataStructures/MinQueue.h"
+#include "DataStructures/MinStack.h"
+#include "DataStructures/SparseTable.h"
 
 TEST(SparseTableTest, BasicTests) {
   std::vector<long> data;
