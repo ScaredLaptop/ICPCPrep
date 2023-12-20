@@ -19,7 +19,7 @@ enable_testing()
 
 add_executable(
   CP-Implementations
-  CP-Algorithms/Implementations/implementations.cpp
+  CP-Algorithms/implementations.cpp
 )
 target_link_libraries(
   CP-Implementations
