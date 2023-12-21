@@ -8,6 +8,10 @@
 #include "DataStructures/MinQueue.h"
 #include "DataStructures/MinStack.h"
 #include "DataStructures/SparseTable.h"
+#include "NumericalMethods/BinarySearch.h"
+#include "NumericalMethods/NewtonMethod.h"
+#include "NumericalMethods/SimpsonFormula.h"
+#include "NumericalMethods/TernarySearch.h"
 
 TEST(SparseTableTest, BasicTests) {
   std::vector<long> data;
@@ -66,4 +70,28 @@ TEST(MinQueueTest, BasicTests) {
   EXPECT_EQ(a.pop(), 0);
   EXPECT_THROW(a.pop(), std::runtime_error);
   EXPECT_THROW(a.minimum(), std::runtime_error);
+}
+
+TEST(BinarySearch, BasicTests) {
+  std::vector<int> a;
+  for (int i = 0; i < 100; i++) {
+    a.push_back(i);
+  }
+  BinarySearch bs{std::span<int>{a}};
+  EXPECT_EQ(bs.search(1), 1);
+  EXPECT_EQ(bs.search(5), 5);
+  EXPECT_EQ(bs.search(-2), std::nullopt);
+}
+
+TEST(TernarySearch, BasicTests) {
+  TernarySearch ts{[](double a) { return a; }};
+  EXPECT_NEAR(ts.maximum(0.0, 1.0), 1.0, 1e-11);
+  EXPECT_NEAR(ts.minimum(0.0, 1.0), 0.0, 1e-11);
+  TernarySearch ts_s{[](double a) {
+    if (1 <= a && a <= 2.1) {
+      return 2 - a;
+    }
+    return a;
+  }};
+  EXPECT_NEAR(ts_s.maximum(0.0, 2.0), 1.0, 1e-11);
 }
